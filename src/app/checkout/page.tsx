@@ -24,7 +24,7 @@ export default function Checkout() {
     paymentMethod: null
   });
 
-  const handleEmailSubmit = (email, isKlikk, userData) => {
+  const handleEmailSubmit = (email: string, isKlikk: boolean, userData: any) => {
     setEmail(email);
     setIsKlikkUser(isKlikk);
     if (isKlikk) {
@@ -50,23 +50,23 @@ export default function Checkout() {
     }
   };
 
-  const handleAddressSubmit = (addressData) => {
+  const handleAddressSubmit = (addressData: any) => {
     // Store the address info
     setOrderData(prev => ({
       ...prev,
       address: addressData
     }));
-    
+
     // Move to payment step for non-Klikk users
     setStep('payment');
   };
 
-  const handleAddressUpdate = (updatedUserData) => {
+  const handleAddressUpdate = (updatedUserData: any) => {
     // Update user data with new address
     setUserData(updatedUserData);
   };
 
-  const handlePaymentSelect = (paymentMethod) => {
+  const handlePaymentSelect = (paymentMethod: any) => {
     setOrderData(prev => ({
       ...prev,
       paymentMethod
