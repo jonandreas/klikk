@@ -9,7 +9,7 @@ import { supabase, getServiceSupabase } from './supabase-client';
  */
 export const signInWithEmail = async (email) => {
   try {
-    const { data, error } = await supabase.auth.signInWithOtp({
+    const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
         emailRedirectTo: `${window.location.origin}/auth/callback`,
@@ -37,7 +37,7 @@ export const signInWithEmail = async (email) => {
  */
 export const signInWithPhone = async (phone) => {
   try {
-    const { data, error } = await supabase.auth.signInWithOtp({
+    const { error } = await supabase.auth.signInWithOtp({
       phone,
     });
 

@@ -16,12 +16,13 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       }
     }, [value]);
 
-    const handleValueChange = (newValue: string) => {
-      if (value === undefined) {
-        setSelectedValue(newValue);
-      }
-      onValueChange?.(newValue);
-    };
+    // Uncomment when implementing tab functionality
+    // const handleValueChange = (newValue: string) => {
+    //   if (value === undefined) {
+    //     setSelectedValue(newValue);
+    //   }
+    //   onValueChange?.(newValue);
+    // };
 
     return (
       <div 
@@ -36,7 +37,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
 
 Tabs.displayName = "Tabs";
 
-export interface TabsListProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type TabsListProps = React.HTMLAttributes<HTMLDivElement>;
 
 const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
   ({ className, ...props }, ref) => {
@@ -54,6 +55,7 @@ const TabsList = React.forwardRef<HTMLDivElement, TabsListProps>(
 TabsList.displayName = "TabsList";
 
 export interface TabsTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  // This is a used prop, don't remove
   value: string;
 }
 
@@ -73,6 +75,7 @@ const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
 TabsTrigger.displayName = "TabsTrigger";
 
 export interface TabsContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  // This is a used prop, don't remove
   value: string;
 }
 

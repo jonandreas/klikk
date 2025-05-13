@@ -5,8 +5,8 @@
 
 import { createClient } from '@supabase/supabase-js';
 
-// Check if we're in a browser environment
-const isBrowser = typeof window !== 'undefined';
+// Check if we're in a browser environment (keeping for future use)
+// const isBrowser = typeof window !== 'undefined';
 
 // Get environment variables
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
