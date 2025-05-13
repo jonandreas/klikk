@@ -2,22 +2,20 @@
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import KlikkEmailInput from '@/components/KlikkEmailInput';
 import KlikkVerification from '@/components/KlikkVerification';
-import KlikkPayment from '@/components/KlikkPayment';
 import CheckoutSummary from '@/components/CheckoutSummary';
 import AddressForm from '@/components/AddressForm';
 import SavedAddressDisplay from '@/components/SavedAddressDisplay';
 import SavedPaymentMethods from '@/components/SavedPaymentMethods';
 import { testUsers } from '@/lib/test-data';
-import { motion } from "framer-motion";
 import { Smartphone, CheckCircle, MapPin, CreditCard } from "lucide-react";
 
 export default function Checkout() {
   const router = useRouter();
-  const [email, setEmail] = useState('');
+  const [, setEmail] = useState('');
   const [step, setStep] = useState('email');
   const [isKlikkUser, setIsKlikkUser] = useState(false);
   const [userData, setUserData] = useState(null);

@@ -122,7 +122,7 @@ async function storeVerificationCodeInSupabase(phoneNumber, code) {
       .eq('verified', false);
 
     // Insert new verification code
-    const { data, error } = await supabase
+    const { error } = await supabase
       .from('verification_codes')
       .insert({
         phone: phoneNumber,

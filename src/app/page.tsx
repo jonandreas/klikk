@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useRouter } from 'next/navigation';
-import { motion } from "framer-motion";
 
 export default function Home() {
   const router = useRouter();
