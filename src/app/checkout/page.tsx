@@ -13,18 +13,52 @@ import SavedPaymentMethods from '@/components/SavedPaymentMethods';
 import { testUsers } from '@/lib/test-data';
 import { Smartphone, CheckCircle, MapPin, CreditCard } from "lucide-react";
 
+// Define interfaces for the data structures
+interface PaymentMethod {
+  id: string;
+  isDefault?: boolean;
+  // Add other payment method properties as needed
+  type?: string;
+  lastFour?: string;
+  expiryDate?: string;
+}
+
+interface Address {
+  id?: string;
+  street: string;
+  city: string;
+  state?: string;
+  postalCode: string;
+  country: string;
+  isDefault?: boolean;
+}
+
+interface UserData {
+  id?: string;
+  email?: string;
+  phone?: string;
+  name?: string;
+  addresses?: Address[];
+  paymentMethods?: PaymentMethod[];
+}
+
+interface OrderData {
+  address: Address | null;
+  paymentMethod: PaymentMethod | null;
+}
+
 export default function Checkout() {
   const router = useRouter();
   const [, setEmail] = useState('');
   const [step, setStep] = useState('email');
   const [isKlikkUser, setIsKlikkUser] = useState(false);
-  const [userData, setUserData] = useState(null);
-  const [orderData, setOrderData] = useState({
+  const [userData, setUserData] = useState<UserData | null>(null);
+  const [orderData, setOrderData] = useState<OrderData>({
     address: null,
     paymentMethod: null
   });
 
-  const handleEmailSubmit = (email: string, isKlikk: boolean, userData: any) => {
+  const handleEmailSubmit = (email: string, isKlikk: boolean, userData: UserData) => {
     setEmail(email);
     setIsKlikkUser(isKlikk);
     if (isKlikk) {
@@ -50,7 +84,7 @@ export default function Checkout() {
     }
   };
 
-  const handleAddressSubmit = (addressData: any) => {
+  const handleAddressSubmit = (addressData: Address) => {
     // Store the address info
     setOrderData(prev => ({
       ...prev,
@@ -61,12 +95,12 @@ export default function Checkout() {
     setStep('payment');
   };
 
-  const handleAddressUpdate = (updatedUserData: any) => {
+  const handleAddressUpdate = (updatedUserData: UserData) => {
     // Update user data with new address
     setUserData(updatedUserData);
   };
 
-  const handlePaymentSelect = (paymentMethod: any) => {
+  const handlePaymentSelect = (paymentMethod: PaymentMethod) => {
     setOrderData(prev => ({
       ...prev,
       paymentMethod
