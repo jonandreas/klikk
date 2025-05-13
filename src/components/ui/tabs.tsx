@@ -7,7 +7,8 @@ export interface TabsProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
-  ({ className, defaultValue, value, onValueChange, ...props }, ref) => {
+  // onValueChange is currently unused but will be in future implementation
+  ({ className, defaultValue, value, /* onValueChange, */ ...props }, ref) => {
     const [selectedValue, setSelectedValue] = React.useState(value || defaultValue);
 
     React.useEffect(() => {
@@ -16,7 +17,7 @@ const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
       }
     }, [value]);
 
-    // Uncomment when implementing tab functionality
+    // Tabs functionality to be implemented in the future
     // const handleValueChange = (newValue: string) => {
     //   if (value === undefined) {
     //     setSelectedValue(newValue);
@@ -60,7 +61,8 @@ export interface TabsTriggerProps extends React.ButtonHTMLAttributes<HTMLButtonE
 }
 
 const TabsTrigger = React.forwardRef<HTMLButtonElement, TabsTriggerProps>(
-  ({ className, value, ...props }, ref) => {
+  // value prop is required and will be used when implementing tab functionality
+  ({ className, /* value, */ ...props }, ref) => {
     return (
       <button
         ref={ref}
@@ -80,7 +82,8 @@ export interface TabsContentProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const TabsContent = React.forwardRef<HTMLDivElement, TabsContentProps>(
-  ({ className, value, ...props }, ref) => {
+  // value prop is required and will be used when implementing tab functionality
+  ({ className, /* value, */ ...props }, ref) => {
     return (
       <div
         ref={ref}
