@@ -4,16 +4,19 @@ export interface RadioGroupProps extends React.HTMLAttributes<HTMLDivElement> {
   defaultValue?: string;
 }
 
-const RadioGroup: React.FC<RadioGroupProps> = ({ 
-  className, 
-  defaultValue,
-  ...props 
+const RadioGroup: React.FC<RadioGroupProps> = ({
+  className,
+  // defaultValue will be used when implementing radio group functionality
+  // defaultValue,
+  ...props
 }) => {
-  const [value, setValue] = React.useState(defaultValue);
+  // State will be implemented in the future when connecting RadioGroupItems
+  // const [value, setValue] = React.useState(defaultValue);
 
-  const handleItemChange = (newValue: string) => {
-    setValue(newValue);
-  };
+  // Function to be implemented in the future
+  // const handleItemChange = (newValue: string) => {
+  //   setValue(newValue);
+  // };
 
   return (
     <div 
@@ -27,6 +30,7 @@ const RadioGroup: React.FC<RadioGroupProps> = ({
 RadioGroup.displayName = "RadioGroup";
 
 export interface RadioGroupItemProps extends React.InputHTMLAttributes<HTMLInputElement> {
+  // This prop is used internally for the radio input
   value: string;
 }
 
